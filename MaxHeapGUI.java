@@ -6,6 +6,7 @@ import java.util.*;
 
 public class HeapViewer {
     
+    private MaxHeapInterface<int> heap = new MaxHeap();
     public HeapViewer() {
     
         JFrame frame = new JFrame("Heap Viewer", new BorderLayout());
@@ -15,6 +16,7 @@ public class HeapViewer {
         
         JLabel before = new JLabel("Before");
         JLabel after = new JLabel("After");
+        
         
         JTextField HeapBefore = new JTextField(1, 500);
         JTextField HeapAfter = new JTextField(1, 500);
