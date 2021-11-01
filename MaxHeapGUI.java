@@ -32,7 +32,7 @@ public class HeapViewer {
             public void run() {
                 new HeapViewer();
             }
-        }
-    });
+        });
+    }
 
 }
