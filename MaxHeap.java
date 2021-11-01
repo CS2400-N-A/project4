@@ -38,12 +38,23 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public void add(T newEntry)
    {
-   // See Segment 27.8.
+   //checkInitialization();
+   int newIndex = lastIndex + 1;
+   int parentIndex = lastIndex /2;
+   while ((parentIndex > 0) && (newEntry.compareTo(heap[parentIndex])>0)) {
+      heap[newIndex] = heap[parentIndex];
+      newIndex = parentIndex;
+      parentIndex = newIndex /2;
+      } // end while
+      heap[newIndex] = newEntry;
+      lastIndex++;
+      //ensureCapacity();
+      
    } // end add
 
    public T removeMax()
    {
-   // See Segment 27.12. 
+     
    } // end removeMax
 
    public T getMax()
