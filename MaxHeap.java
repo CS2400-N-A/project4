@@ -12,8 +12,10 @@ public final class MaxHeap<T extends Comparable<? super T>>
    private T[] heap;      // Array of heap entries; ignore heap[0]
    private int lastIndex; // Index of last entry and number of entries
    private boolean integrityOK = false;
+   private int reheap;
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
+	
    
    public MaxHeap()
    {
@@ -33,17 +35,30 @@ public final class MaxHeap<T extends Comparable<? super T>>
       T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
       heap = tempHeap;
       lastIndex = 0;
+      reheap = 0;
       integrityOK = true;
    } // end constructor
 
    public void add(T newEntry)
    {
-   // See Segment 27.8.
+   //checkInitialization();
+   int newIndex = lastIndex + 1;
+   int parentIndex = lastIndex /2;
+   while ((parentIndex > 0) && (newEntry.compareTo(heap[parentIndex])>0)) {
+      heap[newIndex] = heap[parentIndex];
+      newIndex = parentIndex;
+      parentIndex = newIndex /2;
+      reheap++;
+      } // end while
+      heap[newIndex] = newEntry;
+      lastIndex++;
+      //ensureCapacity();
+      
    } // end add
 
    public T removeMax()
    {
-   // See Segment 27.12. 
+     
    } // end removeMax
 
    public T getMax()
@@ -76,6 +91,5 @@ public final class MaxHeap<T extends Comparable<? super T>>
       lastIndex = 0;
    } // end clear
    
-// Private methods
 // . . .
 } // end MaxHeap
