@@ -28,7 +28,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       if (initialCapacity < DEFAULT_CAPACITY)
          initialCapacity = DEFAULT_CAPACITY;
       else // Is initialCapacity too big?
-         checkCapacity(initialCapacity);
+         initialCapacity = checkCapacity(initialCapacity);
       
       // The cast is safe because the new array contains null entries
       @SuppressWarnings("unchecked")
@@ -101,6 +101,15 @@ public final class MaxHeap<T extends Comparable<? super T>>
       } // end while
       lastIndex = 0;
    } // end clear
+
+   private boolean checkIntegrity(){
+      return integrityOK;
+   }
    
+   private int checkCapacity(int capacity){
+      if(capacity>MAX_CAPACITY)
+         return MAX_CAPACITY;
+      return capacity;
+   }
 // . . .
 } // end MaxHeap
