@@ -51,15 +51,18 @@ public class DriverMH {
         
         export1.close();
         kb.close();
+        heapBuilder.close();
         
         //-------
         
         MaxHeap<Integer> heap2 = new MaxHeap<>(100);
+
+        Scanner heapBuilder2 = new Scanner(input);
         
         System.out.println("Inserting data using reheap method"); //reheap method
         
-        while(heapBuilder.hasNext()){
-            heap2.addOptimal(heapBuilder.nextInt());
+        while(heapBuilder2.hasNext()){
+            heap2.addOptimal(heapBuilder2.nextInt());
         }
         
         //All outputs for heap2
@@ -86,7 +89,7 @@ public class DriverMH {
         export2.print(heap2.getEntry(10)); //printing last one without comma
         export2.close();
 
-        heapBuilder.close();
+        heapBuilder2.close();
     }
     
     
