@@ -56,7 +56,15 @@ public final class MaxHeap<T extends Comparable<? super T>>
    } // end add
 
    public void addOptimal(T newEntry){
-
+      int pos;
+      if(lastIndex % 2 == 0)
+         pos = lastIndex / 2;
+      else
+         pos = (lastIndex - 1 )/ 2;
+      while(pos > 0){
+         reheap(pos);
+         pos--;
+      }
    }
 
    public T removeMax()
@@ -125,7 +133,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public T remove(int pos) {
       T ejected = heap[pos]; 
       heap[pos]= null;
-      reaheap(pos);
+      reheap(pos);
       return ejected;
    }
    
