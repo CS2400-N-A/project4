@@ -18,12 +18,12 @@ public class DriverMH {
         
         Scanner heapBuilder = new Scanner(input); //reads file
         
-        MaxHeapInterface<int[]> heap1 = new MaxHeap<int[]>();
+        MaxHeap<Integer> heap1 = new MaxHeap<>();
         
         System.out.println("Inserting data using add method"); //add method
         
-        for (int i = 0; i < input.hasNext(); i++) {
-            heap1.add(input.nextInt());
+        while(heapBuilder.hasNext()) {
+            heap1.add(heapBuilder.nextInt());
         }
         
         //All outputs for heap1
@@ -31,7 +31,7 @@ public class DriverMH {
         PrintWriter export1 = new PrintWriter("data_sorted2.txt");
         export1.println("Heap built using sequential instructions: ");
         
-        for (int i = 0; i < 10 && heap1.getsize(); i++) {
+        for (int i = 0; i < 10 && heap1.getSize(); i++) {
             export1.print(heap1.getEntry(i) + ",");
         } //first 10 or length of heap
         
