@@ -31,7 +31,7 @@ public class DriverMH {
         PrintWriter export1 = new PrintWriter("data_sorted2.txt");
         export1.println("Heap built using sequential instructions: ");
         
-        for (int i = 0; i < 10 && heap1.getSize(); i++) {
+        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
             export1.print(heap1.getEntry(i) + ",");
         } //first 10 or length of heap
         
@@ -39,11 +39,11 @@ public class DriverMH {
         
         export1.println("Heap after 10 removals: "); // Initial line
         
-        for (int i = 0; i < 10 && heap1.getSize(); i++) {
+        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
             heap1.removeMax();
         }
         
-        for (int i = 0; i < 9 && heap1.getSize(); i++) {
+        for (int i = 0; i < 9 && i < heap1.getSize(); i++) {
             export1.println(heap1.getEntry(i+1) + ","); //printing first 10 in heap
         }
         export1.println(heap1.getEntry(10)); //printing last one without comma
@@ -53,12 +53,12 @@ public class DriverMH {
         
         //-------
         
-        MaxHeapInterface<int[]> heap2 = new MaxHeap<int[]>();
+        MaxHeap<Integer> heap2 = new MaxHeap<>();
         
         System.out.println("Inserting data using reheap method"); //reheap method
         
-        for (int i = 0; i < input.hasNext(); i++) {
-            heap2.reheap(input.nextInt());
+        for (int i = 0; heapBuilder.hasNext(); i++) {
+            heap2.reheap(heapBuilder.nextInt());
         }
         
         //All outputs for heap2
@@ -66,7 +66,7 @@ public class DriverMH {
         PrintWriter export2 = new PrintWriter("data_sorted3.txt");
         export2.println("Heap built using optimal instructions: ");
         
-        for (int i = 0; i < 10 && heap2.getsize(); i++) {
+        for (int i = 0; i < 10 && i < heap2.getSize(); i++) {
             export2.print(heap2.getEntry(i) + ",");
         } //first 10 or length of heap
         
@@ -74,11 +74,11 @@ public class DriverMH {
         
         export2.println("Heap after 10 removals: "); // Initial line
         
-        for (int i = 0; i < 10 && heap2.getSize(); i++) {
+        for (int i = 0; i < 10 && i < heap2.getSize(); i++) {
             heap2.removeMax();
         }
         
-        for (int i = 0; i < 9 && heap2.getSize(); i++) {
+        for (int i = 0; i < 9 && i < heap2.getSize(); i++) {
             export2.println(heap2.getEntry(i+1) + ","); //printing first 10 in heap
         }
         export2.println(heap2.getEntry(10)); //printing last one without comma
