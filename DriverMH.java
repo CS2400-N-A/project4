@@ -60,9 +60,12 @@ public class DriverMH {
         
         System.out.println("Inserting data using reheap method"); //reheap method
         
-        while(heapBuilder2.hasNext()){
-            heap2.add(heapBuilder2.nextInt());
+        Integer[] numbers = new Integer[100];
+
+        for(int i = 0; i < numbers.length; i++){
+            numbers[i] = heapBuilder2.nextInt();
         }
+        heap2.addOptimal(numbers);
         
         //All outputs for heap2
         

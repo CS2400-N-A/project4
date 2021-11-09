@@ -11,7 +11,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    private T[] heap;      // Array of heap entries; ignore heap[0]
    private int lastIndex; // Index of last entry and number of entries
    private boolean integrityOK = false;
-   private int reheap;
+   private int swaps;
 	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
 	
@@ -34,7 +34,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
       heap = tempHeap;
       lastIndex = 0;
-      reheap = 0;
+      swaps = 0;
       integrityOK = true;
    } // end constructor
 
@@ -47,7 +47,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       heap[newIndex] = heap[parentIndex];
       newIndex = parentIndex;
       parentIndex = newIndex /2;
-      reheap++;
+      swaps++;
       } // end while
       heap[newIndex] = newEntry;
       lastIndex++;
@@ -55,16 +55,13 @@ public final class MaxHeap<T extends Comparable<? super T>>
       
    } // end add
 
-   public void addOptimal(T newEntry){
-      int pos;
-      if(lastIndex % 2 == 0)
-         pos = lastIndex / 2;
-      else
-         pos = (lastIndex - 1 )/ 2;
-      while(pos > 0){
-         reheap(pos);
+   public void addOptimal(T[] newEntry){
+      for(int i = 0; i < newEntry.length; i++){
+         heap[i+1] = newEntry[i];
          lastIndex++;
-         pos--;
+      }
+      for(int rootIndex = lastIndex / 2; rootIndex > 0; rootIndex--){
+         reheap(rootIndex);
       }
    }
 
@@ -128,7 +125,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    }
    
    public int getSwaps() {
-      return reheap;
+      return swaps;
    }
    
    public T remove(int pos) {
@@ -153,6 +150,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
          } // end if
 
          if (orphan.compareTo(heap[largerChildIndex]) < 0) {
+            swaps++;
             heap[pos] = heap[largerChildIndex];
             pos = largerChildIndex;
             leftChildIndex = 2 * pos + 1;
