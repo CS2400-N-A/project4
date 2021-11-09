@@ -22,7 +22,6 @@ public class DriverMH {
         System.out.println("Inserting data using add method"); //add method
         
         while(heapBuilder.hasNext()) {
-            //System.out.println(heapBuilder.nextInt());
             heap1.add(heapBuilder.nextInt());
         }
         
@@ -44,7 +43,7 @@ public class DriverMH {
             heap1.removeMax();
         }
         
-        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
+        for (int i = 0; i < 10; i++) {
             export.print(heap1.getEntry(i+1) + ","); //printing first 10 in heap
         }
         export.print(heap1.getEntry(11)); //printing last one without comma
@@ -71,7 +70,7 @@ public class DriverMH {
         
         export.print("Heap built using optimal instructions: ");
         
-        for (int i = 1; i < 10 && i < heap2.getSize(); i++) {
+        for (int i = 1; i < 10; i++) {
             export.print(heap2.getEntry(i) + ",");
         } //first 9 or length of heap
         export.print(heap2.getEntry(11) + "\n"); //printing last one without comma
@@ -80,11 +79,11 @@ public class DriverMH {
         
         export.print("Heap after 10 removals: "); // Initial line
         
-        for (int i = 0; i < 10 && i < heap2.getSize(); i++) {
+        for (int i = 0; i < 10; i++) {
             heap2.removeMax();
         }
         
-        for (int i = 1; i < 10 && i < heap2.getSize(); i++) {
+        for (int i = 0; i < 10 && i < heap2.getSize(); i++) {
             export.print(heap2.getEntry(i+1) + ","); //printing first 10 in heap
         }
         export.print(heap2.getEntry(11)); //printing last one without comma
