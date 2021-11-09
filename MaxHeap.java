@@ -27,7 +27,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       if (initialCapacity < DEFAULT_CAPACITY)
          initialCapacity = DEFAULT_CAPACITY;
       else // Is initialCapacity too big?
-         initialCapacity = checkCapacity(initialCapacity);
+         checkCapacity(initialCapacity);
       
       // The cast is safe because the new array contains null entries
       @SuppressWarnings("unchecked")
@@ -38,17 +38,17 @@ public final class MaxHeap<T extends Comparable<? super T>>
       integrityOK = true;
    } // end constructor
 
-   public void add(T newEntry)
-   {
-   //checkInitialization();
-   int newIndex = lastIndex + 1;
-   int parentIndex = lastIndex /2;
-   while ((parentIndex > 0) && (newEntry.compareTo(heap[parentIndex])>0)) {
-      heap[newIndex] = heap[parentIndex];
-      newIndex = parentIndex;
-      parentIndex = newIndex /2;
-      swaps++;
+   public void add(T newEntry) {
+      checkIntegrity();
+      int newIndex = lastIndex + 1;
+      int parentIndex = newIndex / 2;
+      while ((parentIndex > 0) && (newEntry.compareTo(heap[parentIndex]) > 0)) {
+         heap[newIndex] = heap[parentIndex];
+         newIndex = parentIndex;
+         parentIndex = newIndex /2;
+         swaps++;
       } // end while
+      
       heap[newIndex] = newEntry;
       lastIndex++;
       //ensureCapacity();
@@ -138,7 +138,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
    public void reheap(int pos) {
       boolean done = false;
       T orphan = heap[pos];
-      int leftChildIndex = 2 * pos + 1;
+      int leftChildIndex = 2 * pos;
 
       while (!done && (leftChildIndex <= lastIndex)) {
          int largerChildIndex = leftChildIndex;
@@ -146,14 +146,14 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
          if ( (rightChildIndex <= lastIndex) &&
                heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0) {
-         largerChildIndex = rightChildIndex;
+            largerChildIndex = rightChildIndex;
          } // end if
 
          if (orphan.compareTo(heap[largerChildIndex]) < 0) {
             swaps++;
             heap[pos] = heap[largerChildIndex];
             pos = largerChildIndex;
-            leftChildIndex = 2 * pos + 1;
+            leftChildIndex = 2 * pos;
          } else
             done = true;
       } // end while

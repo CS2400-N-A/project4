@@ -4,7 +4,6 @@ public class DriverMH {
     
     public static void main(String[] args) throws IOException {
     
-    
         System.out.println("Insert file here: ");
         Scanner kb = new Scanner(System.in);
         String filename = kb.nextLine();
@@ -23,6 +22,7 @@ public class DriverMH {
         System.out.println("Inserting data using add method"); //add method
         
         while(heapBuilder.hasNext()) {
+            //System.out.println(heapBuilder.nextInt());
             heap1.add(heapBuilder.nextInt());
         }
         
@@ -31,7 +31,7 @@ public class DriverMH {
         PrintWriter export = new PrintWriter("output.txt");
         export.print("Heap built using sequential instructions: ");
         
-        for (int i = 1; i < 10 && i < heap1.getSize(); i++) {
+        for (int i = 1; i < 10; i++) {
             export.print(heap1.getEntry(i) + ",");
         } //first 9 or length of heap
         export.print(heap1.getEntry(11)+"\n"); //printing last one without
@@ -40,11 +40,11 @@ public class DriverMH {
         
         export.print("Heap after 10 removals: "); // Initial line
         
-        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
+        for (int i = 0; i < 10; i++) {
             heap1.removeMax();
         }
         
-        for (int i = 1; i < 10 && i < heap1.getSize(); i++) {
+        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
             export.print(heap1.getEntry(i+1) + ","); //printing first 10 in heap
         }
         export.print(heap1.getEntry(11)); //printing last one without comma
