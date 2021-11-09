@@ -1,7 +1,7 @@
-Heap built using sequential instructions: 100,95,99,78,94,98,62,69,77,93
-Number of swaps in the heap creation: 474
-Heap after 10 removals: 95,69,82,94,98,62,72,77,45,93
+Heap built using sequential instructions: 100,94,99,77,93,98,61,68,76,92
+Number of swaps in the heap creation: 480
+Heap after 10 removals: 90,89,62,77,88,53,61,68,76,84,87
 
-Heap built using optimal instructions: 94,100,78,93,99,62,70,77,86,98
-Number of swaps in the heap creation: 90
-Heap after 10 removals: 100,78,84,99,62,70,77,83,47,98
+Heap built using optimal instructions: 100,95,99,79,94,98,63,71,78,93
+Number of swaps in the heap creation: 96
+Heap after 10 removals: 90,89,63,79,88,55,62,71,78,87,47
