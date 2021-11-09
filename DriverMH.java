@@ -29,11 +29,12 @@ public class DriverMH {
         //All outputs for heap1
         
         PrintWriter export1 = new PrintWriter("data_sorted2.txt");
-        export1.println("Heap built using sequential instructions: ");
+        export1.print("Heap built using sequential instructions: ");
         
-        for (int i = 0; i < 10 && i < heap1.getSize(); i++) {
+        for (int i = 0; i < 9 && i < heap1.getSize(); i++) {
             export1.print(heap1.getEntry(i) + ",");
-        } //first 10 or length of heap
+        } //first 9 or length of heap
+        export1.print(heap1.getEntry(10)+"\n"); //printing last one without
         
         export1.println("Number of swaps is: "+ Integer.toString(heap1.getSwaps())); // for swaps
         
@@ -44,9 +45,9 @@ public class DriverMH {
         }
         
         for (int i = 0; i < 9 && i < heap1.getSize(); i++) {
-            export1.println(heap1.getEntry(i+1) + ","); //printing first 10 in heap
+            export1.print(heap1.getEntry(i+1) + ","); //printing first 10 in heap
         }
-        export1.println(heap1.getEntry(10)); //printing last one without comma
+        export1.print(heap1.getEntry(10)); //printing last one without comma
         
         export1.close();
         kb.close();
@@ -58,17 +59,18 @@ public class DriverMH {
         System.out.println("Inserting data using reheap method"); //reheap method
         
         while(heapBuilder.hasNext()){
-            heap2.reheap(heapBuilder.nextInt());
+            heap2.addOptimal(heapBuilder.nextInt());
         }
         
         //All outputs for heap2
         
         PrintWriter export2 = new PrintWriter("data_sorted3.txt");
-        export2.println("Heap built using optimal instructions: ");
+        export2.print("Heap built using optimal instructions: ");
         
-        for (int i = 0; i < 10 && i < heap2.getSize(); i++) {
+        for (int i = 0; i < 9 && i < heap2.getSize(); i++) {
             export2.print(heap2.getEntry(i) + ",");
-        } //first 10 or length of heap
+        } //first 9 or length of heap
+        export2.print(heap2.getEntry(10)); //printing last one without comma
         
         export2.println("Number of swaps is: "+ Integer.toString(heap2.getSwaps())); // for swaps
         
@@ -79,9 +81,9 @@ public class DriverMH {
         }
         
         for (int i = 0; i < 9 && i < heap2.getSize(); i++) {
-            export2.println(heap2.getEntry(i+1) + ","); //printing first 10 in heap
+            export2.print(heap2.getEntry(i+1) + ","); //printing first 10 in heap
         }
-        export2.println(heap2.getEntry(10)); //printing last one without comma
+        export2.print(heap2.getEntry(10)); //printing last one without comma
         export2.close();
 
         heapBuilder.close();
