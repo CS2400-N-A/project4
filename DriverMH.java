@@ -18,7 +18,7 @@ public class DriverMH {
         
         Scanner heapBuilder = new Scanner(input); //reads file
         
-        MaxHeap<Integer> heap1 = new MaxHeap<>();
+        MaxHeap<Integer> heap1 = new MaxHeap<>(100);
         
         System.out.println("Inserting data using add method"); //add method
         
@@ -53,7 +53,7 @@ public class DriverMH {
         
         //-------
         
-        MaxHeap<Integer> heap2 = new MaxHeap<>();
+        MaxHeap<Integer> heap2 = new MaxHeap<>(100);
         
         System.out.println("Inserting data using reheap method"); //reheap method
         
