@@ -63,6 +63,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
          pos = (lastIndex - 1 )/ 2;
       while(pos > 0){
          reheap(pos);
+         lastIndex++;
          pos--;
       }
    }
