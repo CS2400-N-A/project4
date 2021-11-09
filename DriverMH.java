@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.*;
 public class DriverMH {
     
-    public static void main(String[] args) {//throws IOException {
+    public static void main(String[] args) throws IOException {
     
     
         System.out.println("Insert file here: ");
@@ -57,7 +57,7 @@ public class DriverMH {
         
         System.out.println("Inserting data using reheap method"); //reheap method
         
-        for (int i = 0; heapBuilder.hasNext(); i++) {
+        while(heapBuilder.hasNext()){
             heap2.reheap(heapBuilder.nextInt());
         }
         
