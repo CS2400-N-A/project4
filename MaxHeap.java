@@ -28,7 +28,7 @@ public final class MaxHeap<T extends Comparable<? super T>>
       if (initialCapacity < DEFAULT_CAPACITY)
          initialCapacity = DEFAULT_CAPACITY;
       else // Is initialCapacity too big?
-         checkCapacity(initialCapacity);
+         initialCapacity = checkCapacity(initialCapacity);
       
       // The cast is safe because the new array contains null entries
       @SuppressWarnings("unchecked")
@@ -58,9 +58,20 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public T removeMax()
    {
-     
-   } // end removeMax
+      checkIntegrity();             // Ensure initialization of data fields
+      T root = null;
 
+      if (!isEmpty())
+      {
+         root = heap[1];            // Return value
+         heap[1] = heap[lastIndex]; // Form a semiheap
+         lastIndex--;               // Decrease size
+         reheap(1);                 // Transform to a heap
+      } // end if
+      
+      return root;
+   } // end removeMax
+   
    public T getMax()
    {
 		checkIntegrity();
@@ -90,7 +101,12 @@ public final class MaxHeap<T extends Comparable<? super T>>
       } // end while
       lastIndex = 0;
    } // end clear
+
+   private boolean checkIntegrity(){
+      return integrityOK;
+   }
    
+<<<<<<< HEAD
    public T getEntry() {
       getEntry(lastIndex);
    }
@@ -117,6 +133,12 @@ public final class MaxHeap<T extends Comparable<? super T>>
    
    public T reheap(T insert) {
    
+=======
+   private int checkCapacity(int capacity){
+      if(capacity>MAX_CAPACITY)
+         return MAX_CAPACITY;
+      return capacity;
+>>>>>>> dc04bdee3c52adb877579312c4fce0b48935fc65
    }
 // . . .
 } // end MaxHeap
