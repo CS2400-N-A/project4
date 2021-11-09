@@ -83,6 +83,8 @@ public class DriverMH {
         }
         export2.println(heap2.getEntry(10)); //printing last one without comma
         export2.close();
+
+        heapBuilder.close();
     }
     
     
