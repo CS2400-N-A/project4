@@ -137,9 +137,30 @@ public final class MaxHeap<T extends Comparable<? super T>>
       return ejected;
    }
    
-   public T reheap(int pos) {
-      
-   }
+   public void reheap(int pos) {
+      boolean done = false;
+      T orphan = heap[pos];
+      int leftChildIndex = 2 * pos + 1;
+
+      while (!done && (leftChildIndex <= lastIndex)) {
+         int largerChildIndex = leftChildIndex;
+         int rightChildIndex = leftChildIndex + 1;
+
+         if ( (rightChildIndex <= lastIndex) &&
+               heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0) {
+         largerChildIndex = rightChildIndex;
+         } // end if
+
+         if (orphan.compareTo(heap[largerChildIndex]) < 0) {
+            heap[pos] = heap[largerChildIndex];
+            pos = largerChildIndex;
+            leftChildIndex = 2 * pos + 1;
+         } else
+            done = true;
+      } // end while
+
+      heap[pos] = orphan;
+   } // end reheap
    
    private int checkCapacity(int capacity){
       if(capacity>MAX_CAPACITY)
