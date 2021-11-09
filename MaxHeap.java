@@ -91,5 +91,32 @@ public final class MaxHeap<T extends Comparable<? super T>>
       lastIndex = 0;
    } // end clear
    
+   public T getEntry() {
+      getEntry(lastIndex);
+   }
+   
+   public T getEntry(int index) {
+      checkIntegrity();
+      return heap[index];
+   }
+   
+   public int getSwaps() {
+      return reheap;
+   }
+   
+   public T remove(int pos) {
+      T ejected = heap[pos]; 
+      heap[pos]= null;
+      reaheap(pos);
+      return ejected;
+   }
+   
+   public T reheap(int pos) {
+      
+   }
+   
+   public T reheap(T insert) {
+   
+   }
 // . . .
 } // end MaxHeap
